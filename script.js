@@ -1,36 +1,45 @@
-//your JS code here. If required.
-const blockId = document.getElementById("block_id");
-const colourId = document.getElementById("colour_id");
-const change_btn = document.getElementById("change_button");
-const resetBtn = document.getElementById("reset");
+let inputbox = document.querySelector("#block_id");
+let colorbox = document.querySelector("#colour_id")
 
-change_btn.addEventListener("click", ()=> {
-	let block = blockId.value;
-	let color = colourId.value;
-	console.log("block and color is:  ", block, color)
-	if(!block || !color){
-		alert("Please choose both block and color"); 
-		return;
-	} 
-
-	if(block > 9){
-		alert("Please choose block between 1 and 9");
-		return;
-	}
+let btn = document.querySelector("#change_button")
+let resetbtn = document.querySelector("#reset_button")
 
 
-	document.querySelectorAll(".grid-item").forEach((item) => {
-		item.style.backgroundColor = "transparent";
-	})
+function resetColor(){
+console.log("hello");
 
-	const changeBlock = document.getElementById(block);
-	changeBlock.style.backgroundColor = color;
+    for(let i=1;i<=9;i++){
+let block = document.getElementById(${i.toString()})
+console.log(block);
+
+if(block){
+    block.style.backgroundColor="transparent"
+}
+    }
+}
+
+
+
+btn.addEventListener("click",(e)=>{
+    e.preventDefault()
+
+    let input= inputbox.value.trim();
+    let color = colorbox.value.trim();
+
+
+   resetColor()
+
+let targetBlock = document.getElementById(${input})
+if(targetBlock){
+    targetBlock.style.backgroundColor=${color}
+}
+else{
+    alert("invalid input ID please enter a 1-9")
+}
+
+
+
 })
 
-resetBtn.addEventListener("click", ()=> {
-	 document.querySelectorAll('.grid-item').forEach((item) => {
-        item.style.backgroundColor = 'transparent';
-    });
-    blockId.value = '';
-    colourId.value = '';
-})
+
+resetbtn.addEventListener("click",resetColor)
